@@ -8,8 +8,10 @@ class MpesasController < ApplicationController
         amount = params[:amount]
         url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
         timestamp = "#{Time.now.strftime "%Y%m%d%H%M%S"}"
-        business_short_code = ENV["MPESA_SHORTCODE"]
+        business_short_code = ENV["MPESA_SHORT_CODE"]
         password = Base64.strict_encode64("#{business_short_code}#{ENV["MPESA_PASSKEY"]}#{timestamp}")
+        # callbackurl= ENV["CALLBACK_URL"]
+        #  puts callbackurl
         payload = {
         'BusinessShortCode': business_short_code,
         'Password': password,
@@ -19,7 +21,9 @@ class MpesasController < ApplicationController
         'PartyA': phoneNumber,
         'PartyB': business_short_code,
         'PhoneNumber': phoneNumber,
-        'CallBackURL': "#{ENV["CALLBACK_URL"]}/callback_url",
+        'CallBackURL': "https://ea84-105-53-134-244.eu.ngrok.io",
+        # 'CallBackURL': "#{ENV["CALLBACK_URL"]}/callback_url",
+        'CallBackURL': callbackurl,
         'AccountReference': 'Codearn',
         'TransactionDesc': "Payment for Codearn premium"
         }.to_json
@@ -54,7 +58,7 @@ class MpesasController < ApplicationController
     def stkquery
         url = "https://sandbox.safaricom.co.ke/mpesa/stkpushquery/v1/query"
         timestamp = "#{Time.now.strftime "%Y%m%d%H%M%S"}"
-        business_short_code = ENV["MPESA_SHORTCODE"]
+        business_short_code = ENV["MPESA_SHORT_CODE"]
         password = Base64.strict_encode64("#{business_short_code}#{ENV["MPESA_PASSKEY"]}#{timestamp}")
         payload = {
         'BusinessShortCode': business_short_code,
