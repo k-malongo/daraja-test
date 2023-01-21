@@ -1,5 +1,4 @@
 require_relative "boot"
-require 'env'
 
 require "rails"
 # Pick the frameworks you want:

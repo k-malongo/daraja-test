@@ -9,10 +9,10 @@ Rails.application.configure do
   config.cache_classes = false
 
 
-  # config.hosts.clear
+  config.hosts.clear
 
   # allow ngrok to work
-  config.hosts << /[a-z0-9]+\.ngrok\.io/
+  # config.hosts << /[a-z0-9]+\.ngrok\.io/
 
 
 

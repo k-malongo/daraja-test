@@ -21,9 +21,9 @@ class MpesasController < ApplicationController
         'PartyA': phoneNumber,
         'PartyB': business_short_code,
         'PhoneNumber': phoneNumber,
-        'CallBackURL': "https://ea84-105-53-134-244.eu.ngrok.io",
+        'CallBackURL': "https://79d6-41-81-71-48.eu.ngrok.io",
         # 'CallBackURL': "#{ENV["CALLBACK_URL"]}/callback_url",
-        'CallBackURL': callbackurl,
+        # 'CallBackURL': callbackurl,
         'AccountReference': 'Codearn',
         'TransactionDesc': "Payment for Codearn premium"
         }.to_json
